@@ -14,15 +14,24 @@ class NodeCreator {
 
 public:
 	NodeCreator();
+	~NodeCreator();
+
 	void loadInitialData(string fileName);
 	bool checkData();
-	void correctAllSteps();
-	void createNodes();
-	void printInitialData();
-	void printNodes();
+	void run();
 	void writeNodesInFile(string fileName);
+	void clearMemory();
+
+	int getXStepsNumber();
+	int getYStepsNumber();
+	int getZStepsNumber();
+	Node ***getArrayOfNodes();
 
 private:
 	bool isMoreThanZero(double number);
 	void correctStep(double &x, double &xStep, int &xStepsNumber);
+	void correctAllSteps();	
+	void createNodes();
+	void printInitialData();
+	void printNodes();
 };

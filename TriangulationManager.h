@@ -2,12 +2,14 @@
 
 class TriangulationManager {
 	NodeCreator nodeCreator;
+	int xStepsNumber, yStepsNumber, zStepsNumber;
+	int ***arrayOfNodesNumbers;
 
 public:
 	TriangulationManager ();
 	~TriangulationManager ();
 
-	void runNodeCreator();
+	bool runNodeCreator();
 	void run();
 private:
 

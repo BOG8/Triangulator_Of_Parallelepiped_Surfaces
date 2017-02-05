@@ -18,6 +18,11 @@ NodeCreator::NodeCreator() {
 	arrayOfNodes = NULL;
 }
 
+NodeCreator::~NodeCreator() {
+
+}
+
+// Загружаем данные из файла fileName
 void NodeCreator::loadInitialData(string fileName) {
 	ifstream file(fileName);
 
@@ -35,6 +40,7 @@ bool NodeCreator::isMoreThanZero(double number) {
 	return number > 0;
 }
 
+// Если данные не удовлетворяют необходимы условиям, то возвращается false и сообщение об ошибке
 bool NodeCreator::checkData() {
 	if (!isMoreThanZero(x) || !isMoreThanZero(y) || !isMoreThanZero(z)) {
 		cout << "Please, check lengths of the sides! Lengths of the sides must be more than zero.\n\n";
@@ -57,6 +63,7 @@ bool NodeCreator::checkData() {
 	return true;
 }
 
+// Корректировка шага. Выбирается оптимальный шаг, основанный на заданном в файле с начальными данными
 void NodeCreator::correctStep(double &x, double &xStep, int &xStepsNumber) {
 
 	double quotient = 0;
@@ -71,7 +78,9 @@ void NodeCreator::correctAllSteps() {
 	correctStep(z, zStep, zStepsNumber);
 }
 
+// Создаётся трёхмерный массив узлов
 void NodeCreator::createNodes() {
+	// еление памяти под массив узлов
 	arrayOfNodes = new Node**[xStepsNumber + 1];
 	for (int i = 0; i <= xStepsNumber; i++) {
 		arrayOfNodes[i] = new Node*[yStepsNumber + 1];
@@ -80,6 +89,7 @@ void NodeCreator::createNodes() {
 		}
 	}
 
+	// Массив заполняется данными
 	for (int k = 0; k <= zStepsNumber; k++) {
 		for (int j = 0; j <= yStepsNumber; j++) {
 			for (int i = 0; i <= xStepsNumber; i++) {
@@ -94,6 +104,7 @@ void NodeCreator::createNodes() {
 	}
 }
 
+// Вывод начальных данных в консоль
 void NodeCreator::printInitialData() {
 	cout << "Lengths of the sides by coordinate axis:\n";
 	cout << "x = " << x << '\n';
@@ -106,6 +117,7 @@ void NodeCreator::printInitialData() {
 	cout << "z = " << zStep << "\n\n";
 }
 
+// Вывод данных об узлах в консоль
 void NodeCreator::printNodes() {
 	cout << "Nodes (Number, x, y, z):\n";
 	for (int k = 0; k <= zStepsNumber; k++) {
@@ -120,6 +132,15 @@ void NodeCreator::printNodes() {
 	cout << '\n';
 }
 
+// Запуск основных действий
+void NodeCreator::run() {
+	correctAllSteps();
+	printInitialData();
+	createNodes();
+	printNodes();
+}
+
+// Запись данных об узлах в файл fileName
 void NodeCreator::writeNodesInFile(string fileName) {
 	ofstream file(fileName);
 
@@ -137,4 +158,35 @@ void NodeCreator::writeNodesInFile(string fileName) {
 	file << '\n';
 
 	file.close();
+}
+
+// Освобождение памяти
+void NodeCreator::clearMemory() {
+	for (int i = 0; i <= xStepsNumber; i++) {
+		for (int j = 0; j < yStepsNumber; j++) {
+			delete[] arrayOfNodes[i][j];
+		}
+	}
+
+	for (int i = 0; i <= xStepsNumber; i++) {
+		delete[] arrayOfNodes[i];
+	}
+
+	delete[] arrayOfNodes;
+}
+
+int NodeCreator::getXStepsNumber() {
+	return xStepsNumber;
+}
+
+int NodeCreator::getYStepsNumber() {
+	return yStepsNumber;
+}
+
+int NodeCreator::getZStepsNumber() {
+	return zStepsNumber;
+}
+
+Node ***NodeCreator::getArrayOfNodes() {
+	return arrayOfNodes;
 }
