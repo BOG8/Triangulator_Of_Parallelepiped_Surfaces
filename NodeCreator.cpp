@@ -14,6 +14,8 @@ NodeCreator::NodeCreator() {
 	xStepsNumber = 0;
 	yStepsNumber = 0;
 	zStepsNumber = 0;
+
+	arrayOfNodes = NULL;
 }
 
 void NodeCreator::loadInitialData(string fileName) {
@@ -69,6 +71,29 @@ void NodeCreator::correctAllSteps() {
 	correctStep(z, zStep, zStepsNumber);
 }
 
+void NodeCreator::createNodes() {
+	arrayOfNodes = new Node**[xStepsNumber + 1];
+	for (int i = 0; i <= xStepsNumber; i++) {
+		arrayOfNodes[i] = new Node*[yStepsNumber + 1];
+		for (int j = 0; j <= yStepsNumber; j++) {
+			arrayOfNodes[i][j] = new Node[zStepsNumber + 1];
+		}
+	}
+
+	for (int k = 0; k <= zStepsNumber; k++) {
+		for (int j = 0; j <= yStepsNumber; j++) {
+			for (int i = 0; i <= xStepsNumber; i++) {
+				Node node;
+				node.number = (i + 1) + j * (xStepsNumber + 1) + k * (xStepsNumber + 1) * (yStepsNumber + 1);
+				node.x = i * xStep;
+				node.y = j * yStep;
+				node.z = k * zStep;
+				arrayOfNodes[i][j][k] = node;
+			}
+		}
+	}
+}
+
 void NodeCreator::printInitialData() {
 	cout << "Lengths of the sides by coordinate axis:\n";
 	cout << "x = " << x << '\n';
@@ -79,4 +104,18 @@ void NodeCreator::printInitialData() {
 	cout << "x = " << xStep << '\n';
 	cout << "y = " << yStep << '\n';
 	cout << "z = " << zStep << "\n\n";
+}
+
+void NodeCreator::printNodes() {
+	cout << "Nodes (Number, x, y, z):\n";
+	for (int k = 0; k <= zStepsNumber; k++) {
+		for (int j = 0; j <= yStepsNumber; j++) {
+			for (int i = 0; i <= xStepsNumber; i++) {
+				Node node = arrayOfNodes[i][j][k];
+				cout << node.number << ' ' << node.x << ' ' << node.y << ' ' << node.z << '\n';
+			}
+		}
+	}
+
+	cout << '\n';
 }

@@ -10,6 +10,8 @@ int main(int argc, char *argv[])
 	if (nodeCreator.checkData()) {
 		nodeCreator.correctAllSteps();
 		nodeCreator.printInitialData();
+		nodeCreator.createNodes();
+		nodeCreator.printNodes();
 	}
 
 	system("pause");
