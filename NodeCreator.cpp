@@ -119,3 +119,22 @@ void NodeCreator::printNodes() {
 
 	cout << '\n';
 }
+
+void NodeCreator::writeNodesInFile(string fileName) {
+	ofstream file(fileName);
+
+	int numberOfNodes = (xStepsNumber + 1) * (yStepsNumber + 1) * (zStepsNumber + 1);
+	file << numberOfNodes << ' ' << dimension << '\n';
+	for (int k = 0; k <= zStepsNumber; k++) {
+		for (int j = 0; j <= yStepsNumber; j++) {
+			for (int i = 0; i <= xStepsNumber; i++) {
+				Node node = arrayOfNodes[i][j][k];
+				file << node.x << ' ' << node.y << ' ' << node.z << '\n';
+			}
+		}
+	}
+
+	file << '\n';
+
+	file.close();
+}

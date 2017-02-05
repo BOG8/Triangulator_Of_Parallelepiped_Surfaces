@@ -1,7 +1,10 @@
 #include "Node.h"
 #include <string>
 
+const int dimension = 3;
+
 using namespace std;
+
 
 class NodeCreator {
 	double x, y, z;
@@ -17,6 +20,7 @@ public:
 	void createNodes();
 	void printInitialData();
 	void printNodes();
+	void writeNodesInFile(string fileName);
 
 private:
 	bool isMoreThanZero(double number);

@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 		nodeCreator.printInitialData();
 		nodeCreator.createNodes();
 		nodeCreator.printNodes();
+		nodeCreator.writeNodesInFile("Result.txt");
 	}
 
 	system("pause");
