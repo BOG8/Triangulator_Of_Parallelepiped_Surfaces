@@ -7,6 +7,7 @@ public:
 	TriangulationManager ();
 	~TriangulationManager ();
 
+	void runNodeCreator();
 	void run();
 private:
 

@@ -8,7 +8,7 @@ TriangulationManager ::~TriangulationManager() {
 
 }
 
-void TriangulationManager::run() {
+void TriangulationManager::runNodeCreator() {
 	nodeCreator.loadInitialData("InitialData.txt");
 
 	if (nodeCreator.checkData()) {
@@ -18,4 +18,8 @@ void TriangulationManager::run() {
 		nodeCreator.printNodes();
 		nodeCreator.writeNodesInFile("Result.txt");
 	}
+}
+
+void TriangulationManager::run() {
+	runNodeCreator();
 }
