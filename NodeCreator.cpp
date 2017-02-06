@@ -15,7 +15,7 @@ NodeCreator::NodeCreator() {
 	yStepsNumber = 0;
 	zStepsNumber = 0;
 
-	arrayOfNodes = NULL;
+	arrayOfNodes = 0;
 }
 
 NodeCreator::~NodeCreator() {

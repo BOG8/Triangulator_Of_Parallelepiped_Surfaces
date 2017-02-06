@@ -21,25 +21,25 @@ bool TriangulationManager::runNodeCreator() {
 		xStepsNumber = nodeCreator.getXStepsNumber();
 		yStepsNumber = nodeCreator.getYStepsNumber();
 		zStepsNumber = nodeCreator.getZStepsNumber();
-		Node ***arrayOfNodes = nodeCreator.getArrayOfNodes();
-
-		arrayOfNodesNumbers = new int**[xStepsNumber + 1];
+		Node ***tempArrayOfNodes = nodeCreator.getArrayOfNodes();
+		
+		arrayOfNodes = new Node**[xStepsNumber + 1];
 		for (int i = 0; i <= xStepsNumber; i++) {
-			arrayOfNodesNumbers[i] = new int*[yStepsNumber + 1];
+			arrayOfNodes[i] = new Node*[yStepsNumber + 1];
 			for (int j = 0; j <= yStepsNumber; j++) {
-				arrayOfNodesNumbers[i][j] = new int[zStepsNumber + 1];
+				arrayOfNodes[i][j] = new Node[zStepsNumber + 1];
 			}
 		}
 
 		for (int k = 0; k <= zStepsNumber; k++) {
 			for (int j = 0; j <= yStepsNumber; j++) {
 				for (int i = 0; i <= xStepsNumber; i++) {
-					arrayOfNodesNumbers[i][j][k] = arrayOfNodes[i][j][k].number;
+					arrayOfNodes[i][j][k] = tempArrayOfNodes[i][j][k];
 				}
 			}
 		}
 
-		arrayOfNodes = NULL;
+		tempArrayOfNodes = 0;
 		nodeCreator.clearMemory();
 
 		return true;
