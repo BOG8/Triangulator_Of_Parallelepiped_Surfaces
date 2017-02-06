@@ -48,9 +48,15 @@ bool TriangulationManager::runNodeCreator() {
 	return false;
 }
 
+// Работа с классом runElementCreator
+void TriangulationManager::runElementCreator() {
+	elementCreator.setStepsNumbers(xStepsNumber, yStepsNumber, zStepsNumber);
+	elementCreator.setArrayOfNodes(arrayOfNodes);
+}
+
 // Триангулирование
 void TriangulationManager::run() {
 	if (runNodeCreator()) {
-
+		runElementCreator();
 	}
 }
