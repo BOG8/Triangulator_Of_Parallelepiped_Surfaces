@@ -16,4 +16,5 @@ public:
 	
 private:
 	void templateNumberOne(int xStep, int yStep, int zStep);
+	void templateNumberTwo(int xStep, int yStep, int zStep);
 };
