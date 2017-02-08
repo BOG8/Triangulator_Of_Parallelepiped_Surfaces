@@ -52,6 +52,7 @@ bool TriangulationManager::runNodeCreator() {
 void TriangulationManager::runElementCreator() {
 	elementCreator.setStepsNumbers(xStepsNumber, yStepsNumber, zStepsNumber);
 	elementCreator.setArrayOfNodes(arrayOfNodes);
+	elementCreator.loadCylinderProperties(CYLINDER_PROPERTIES);
 	elementCreator.createElements();
 	elementCreator.printElements();
 	elementCreator.writeElementsInFile(RESULT_FILE);

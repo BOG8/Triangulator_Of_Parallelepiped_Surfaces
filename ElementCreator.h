@@ -6,6 +6,8 @@ const int NUMBER_OF_NODES = 4;
 
 class ElementCreator {
 	int xStepsNumber, yStepsNumber, zStepsNumber;
+	char axe;
+	double minAxeValue, maxAxeValue, centerCoordinateOne, centerCoordinateTwo, radius;
 	Node ***arrayOfNodes;
 	vector<Element> elements;
 
@@ -15,6 +17,7 @@ public:
 
 	void setStepsNumbers(int xStepsNumber, int yStepsNumbers, int zStepsNumbers);
 	void setArrayOfNodes(Node ***tempArrayOfNodes);
+	void loadCylinderProperties(string fileName);
 	void createElements();
 	void printElements();
 	void writeElementsInFile(string fileName);

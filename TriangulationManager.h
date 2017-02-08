@@ -2,6 +2,7 @@
 #include "ElementCreator.h"
 
 const string INITIAL_DATA_FILE = "InitialData.txt";
+const string CYLINDER_PROPERTIES = "CylinderProperties.txt";
 const string RESULT_FILE = "Result.txt";
 
 class TriangulationManager {

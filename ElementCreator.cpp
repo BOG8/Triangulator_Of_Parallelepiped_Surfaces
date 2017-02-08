@@ -40,6 +40,20 @@ void ElementCreator::setArrayOfNodes(Node ***tempArrayOfNodes) {
 	}
 }
 
+void ElementCreator::loadCylinderProperties(string fileName) {
+	ifstream file(fileName);
+
+	if (!file) {
+		cout << "File couldn't be open";
+	}
+	else {
+		file >> axe >> minAxeValue >> maxAxeValue;
+		file >> centerCoordinateOne >> centerCoordinateTwo >> radius;
+	}
+
+	file.close();
+}
+
 void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	Element elementOne;
 	elementOne.k = 0;	// Заглушка
