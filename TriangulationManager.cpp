@@ -53,6 +53,7 @@ void TriangulationManager::runElementCreator() {
 	elementCreator.setStepsNumbers(xStepsNumber, yStepsNumber, zStepsNumber);
 	elementCreator.setArrayOfNodes(arrayOfNodes);
 	elementCreator.createElements();
+	elementCreator.printElements();
 }
 
 // Триангулирование

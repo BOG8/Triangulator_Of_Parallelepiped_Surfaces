@@ -1,4 +1,5 @@
 #include "ElementCreator.h"
+#include <iostream>
 
 ElementCreator::ElementCreator() {
 	xStepsNumber = 0;
@@ -144,5 +145,18 @@ void ElementCreator::createElements() {
 				}
 			}
 		}
+	}
+}
+
+void ElementCreator::printElements() {
+	cout << elements.size() << ' ' << numberOfNodesInElement << "\n";
+	for (int i = 0; i < elements.size(); i++) {
+		cout << elements[i].k;
+
+		for (int j = 0; j < numberOfNodesInElement; j++) {
+			cout << ' ' << elements[i].nodesNumbers[j];
+		}
+
+		cout << "\n\n";
 	}
 }
