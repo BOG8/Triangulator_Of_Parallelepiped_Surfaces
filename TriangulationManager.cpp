@@ -54,6 +54,7 @@ void TriangulationManager::runElementCreator() {
 	elementCreator.setArrayOfNodes(arrayOfNodes);
 	elementCreator.createElements();
 	elementCreator.printElements();
+	elementCreator.writeElementsInFile("Result.txt");
 }
 
 // Триангулирование

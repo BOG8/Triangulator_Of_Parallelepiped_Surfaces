@@ -1,5 +1,8 @@
 #include "ElementCreator.h"
 #include <iostream>
+#include <fstream>
+
+using namespace std;
 
 ElementCreator::ElementCreator() {
 	xStepsNumber = 0;
@@ -157,6 +160,25 @@ void ElementCreator::printElements() {
 			cout << ' ' << elements[i].nodesNumbers[j];
 		}
 
-		cout << "\n\n";
+		cout << "\n";
 	}
+}
+
+void ElementCreator::writeElementsInFile(string fileName) {
+	ofstream file(fileName, ios_base::app);
+
+	file << elements.size() << ' ' << numberOfNodesInElement << "\n";
+	for (int i = 0; i < elements.size(); i++) {
+		file << elements[i].k;
+
+		for (int j = 0; j < numberOfNodesInElement; j++) {
+			file << ' ' << elements[i].nodesNumbers[j];
+		}
+
+		file << "\n";
+	}
+
+	file << '\n';
+
+	file.close();
 }

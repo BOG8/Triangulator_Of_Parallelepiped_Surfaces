@@ -17,6 +17,7 @@ public:
 	void setArrayOfNodes(Node ***tempArrayOfNodes);
 	void createElements();
 	void printElements();
+	void writeElementsInFile(string fileName);
 	
 private:
 	void templateNumberOne(int xStep, int yStep, int zStep);
