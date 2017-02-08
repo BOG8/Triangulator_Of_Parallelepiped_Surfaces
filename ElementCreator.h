@@ -13,6 +13,7 @@ public:
 
 	void setStepsNumbers(int xStepsNumber, int yStepsNumbers, int zStepsNumbers);
 	void setArrayOfNodes(Node ***tempArrayOfNodes);
+	void createElements();
 	
 private:
 	void templateNumberOne(int xStep, int yStep, int zStep);

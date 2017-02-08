@@ -1,6 +1,5 @@
 #include "ElementCreator.h"
 
-
 ElementCreator::ElementCreator() {
 	xStepsNumber = 0;
 	yStepsNumber = 0;
@@ -129,4 +128,21 @@ void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep + 1].number);
 	elements.push_back(elementFive);
 	elementFive.nodesNumbers.clear();
+}
+
+void ElementCreator::createElements() {
+	for (int i = 0; i < xStepsNumber; i++) {
+		for (int j = 0; j < yStepsNumber; j++) {
+			for (int k = 0; k < zStepsNumber; k++) {
+				int coefficient = i + j + k + 1;
+
+				if (coefficient % 2 == 1) {
+					templateNumberOne(i, j, k);
+				}
+				else {
+					templateNumberTwo(i, j, k);
+				}
+			}
+		}
+	}
 }
