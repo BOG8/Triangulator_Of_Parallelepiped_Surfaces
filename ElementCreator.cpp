@@ -152,11 +152,11 @@ void ElementCreator::createElements() {
 }
 
 void ElementCreator::printElements() {
-	cout << elements.size() << ' ' << numberOfNodesInElement << "\n";
+	cout << elements.size() << ' ' << NUMBER_OF_NODES << "\n";
 	for (int i = 0; i < elements.size(); i++) {
 		cout << elements[i].k;
 
-		for (int j = 0; j < numberOfNodesInElement; j++) {
+		for (int j = 0; j < NUMBER_OF_NODES; j++) {
 			cout << ' ' << elements[i].nodesNumbers[j];
 		}
 
@@ -167,11 +167,11 @@ void ElementCreator::printElements() {
 void ElementCreator::writeElementsInFile(string fileName) {
 	ofstream file(fileName, ios_base::app);
 
-	file << elements.size() << ' ' << numberOfNodesInElement << "\n";
+	file << elements.size() << ' ' << NUMBER_OF_NODES << "\n";
 	for (int i = 0; i < elements.size(); i++) {
 		file << elements[i].k;
 
-		for (int j = 0; j < numberOfNodesInElement; j++) {
+		for (int j = 0; j < NUMBER_OF_NODES; j++) {
 			file << ' ' << elements[i].nodesNumbers[j];
 		}
 

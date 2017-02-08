@@ -13,11 +13,11 @@ TriangulationManager ::~TriangulationManager() {
 
 // Работа с классом NodeCreator
 bool TriangulationManager::runNodeCreator() {
-	nodeCreator.loadInitialData("InitialData.txt");
+	nodeCreator.loadInitialData(INITIAL_DATA_FILE);
 
 	if (nodeCreator.checkData()) {
 		nodeCreator.run();
-		nodeCreator.writeNodesInFile("Result.txt");
+		nodeCreator.writeNodesInFile(RESULT_FILE);
 		xStepsNumber = nodeCreator.getXStepsNumber();
 		yStepsNumber = nodeCreator.getYStepsNumber();
 		zStepsNumber = nodeCreator.getZStepsNumber();
@@ -54,7 +54,7 @@ void TriangulationManager::runElementCreator() {
 	elementCreator.setArrayOfNodes(arrayOfNodes);
 	elementCreator.createElements();
 	elementCreator.printElements();
-	elementCreator.writeElementsInFile("Result.txt");
+	elementCreator.writeElementsInFile(RESULT_FILE);
 }
 
 // Триангулирование

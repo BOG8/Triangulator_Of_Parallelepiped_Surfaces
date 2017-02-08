@@ -2,7 +2,7 @@
 #include "Element.h"
 #include <vector>
 
-const int numberOfNodesInElement = 4;
+const int NUMBER_OF_NODES = 4;
 
 class ElementCreator {
 	int xStepsNumber, yStepsNumber, zStepsNumber;

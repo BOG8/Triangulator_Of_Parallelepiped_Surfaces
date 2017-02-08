@@ -145,7 +145,7 @@ void NodeCreator::writeNodesInFile(string fileName) {
 	ofstream file(fileName);
 
 	int numberOfNodes = (xStepsNumber + 1) * (yStepsNumber + 1) * (zStepsNumber + 1);
-	file << numberOfNodes << ' ' << dimension << '\n';
+	file << numberOfNodes << ' ' << DIMENSION << '\n';
 	for (int k = 0; k <= zStepsNumber; k++) {
 		for (int j = 0; j <= yStepsNumber; j++) {
 			for (int i = 0; i <= xStepsNumber; i++) {

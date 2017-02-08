@@ -1,7 +1,7 @@
 #include "Node.h"
 #include <string>
 
-const int dimension = 3;
+const int DIMENSION = 3;
 
 using namespace std;
 
