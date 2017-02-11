@@ -53,6 +53,7 @@ void TriangulationManager::runElementCreator() {
 	elementCreator.setStepsNumbers(xStepsNumber, yStepsNumber, zStepsNumber);
 	elementCreator.setArrayOfNodes(arrayOfNodes);
 	elementCreator.loadCylinderProperties(CYLINDER_PROPERTIES);
+	elementCreator.createMapOfMaterials();
 	elementCreator.createElements();
 	elementCreator.printElements();
 	elementCreator.writeElementsInFile(RESULT_FILE);

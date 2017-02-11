@@ -4,5 +4,5 @@ using namespace std;
 
 struct Element {
 	vector<int> nodesNumbers;
-	double k;
+	int k;
 };

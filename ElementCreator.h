@@ -4,6 +4,7 @@
 
 const int NUMBER_OF_NODES = 4;
 const int SECOND_DEGREE = 2;
+const int DIFFUSION_MATERIAL = 3;
 
 class ElementCreator {
 	int xStepsNumber, yStepsNumber, zStepsNumber;
@@ -20,10 +21,6 @@ public:
 	void setStepsNumbers(int xStepsNumber, int yStepsNumbers, int zStepsNumbers);
 	void setArrayOfNodes(Node ***tempArrayOfNodes);
 	void loadCylinderProperties(string fileName);
-	void determineMaterialByXAxe(int i, int j, int k);
-	void determineMaterialByYAxe(int i, int j, int k);
-	void determineMaterialByZAxe(int i, int j, int k);
-	void determineMaterial(bool isMaterialDefected, int i, int j, int k);
 	void createMapOfMaterials();
 	void createElements();
 	void printElements();
@@ -32,4 +29,9 @@ public:
 private:
 	void templateNumberOne(int xStep, int yStep, int zStep);
 	void templateNumberTwo(int xStep, int yStep, int zStep);
+	void determineMaterialByXAxe(int i, int j, int k);
+	void determineMaterialByYAxe(int i, int j, int k);
+	void determineMaterialByZAxe(int i, int j, int k);
+	void determineMaterial(bool isMaterialDefected, int i, int j, int k);
+	void determineMaterialOfElement();
 };

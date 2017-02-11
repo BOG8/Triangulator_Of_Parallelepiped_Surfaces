@@ -150,7 +150,13 @@ void ElementCreator::createMapOfMaterials() {
 
 void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	Element elementOne;
-	elementOne.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep][zStep] == arrayOfMaterials[xStep + 1][yStep][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep] == arrayOfMaterials[xStep + 1][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep][zStep + 1]) {
+		elementOne.k = arrayOfMaterials[xStep][yStep][zStep];
+	} else {
+		elementOne.k = DIFFUSION_MATERIAL;
+	}
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep].number);
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep].number);
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep].number);
@@ -159,7 +165,13 @@ void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	elementOne.nodesNumbers.clear();
 
 	Element elementTwo;
-	elementTwo.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep][zStep] == arrayOfMaterials[xStep][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep + 1][zStep] == arrayOfMaterials[xStep][yStep + 1][zStep + 1]) {
+		elementTwo.k = arrayOfMaterials[xStep][yStep][zStep];
+	} else {
+		elementTwo.k = DIFFUSION_MATERIAL;
+	}
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep].number);
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep].number);
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep].number);
@@ -168,7 +180,13 @@ void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	elementTwo.nodesNumbers.clear();
 
 	Element elementThree;
-	elementThree.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep][zStep] == arrayOfMaterials[xStep][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep][zStep + 1] == arrayOfMaterials[xStep + 1][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep + 1] == arrayOfMaterials[xStep][yStep + 1][zStep + 1]) {
+		elementThree.k = arrayOfMaterials[xStep][yStep][zStep];
+	} else {
+		elementThree.k = DIFFUSION_MATERIAL;
+	}
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep].number);
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep + 1].number);
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep + 1].number);
@@ -177,7 +195,13 @@ void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	elementThree.nodesNumbers.clear();
 
 	Element elementFour;
-	elementFour.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep + 1][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep + 1] == arrayOfMaterials[xStep][yStep + 1][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep + 1] == arrayOfMaterials[xStep + 1][yStep + 1][zStep + 1]) {
+		elementFour.k = arrayOfMaterials[xStep + 1][yStep + 1][zStep];
+	} else {
+		elementFour.k = DIFFUSION_MATERIAL;
+	}
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep].number);
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep + 1].number);
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep + 1].number);
@@ -186,7 +210,13 @@ void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 	elementFour.nodesNumbers.clear();
 
 	Element elementFive;
-	elementFive.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep][zStep] == arrayOfMaterials[xStep + 1][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep + 1] == arrayOfMaterials[xStep][yStep + 1][zStep + 1]) {
+		elementFive.k = arrayOfMaterials[xStep][yStep][zStep];
+	} else {
+		elementFive.k = DIFFUSION_MATERIAL;
+	}
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep].number);
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep].number);
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep + 1].number);
@@ -197,7 +227,13 @@ void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
 
 void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	Element elementOne;
-	elementOne.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep][zStep] == arrayOfMaterials[xStep + 1][yStep][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep] == arrayOfMaterials[xStep][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep] == arrayOfMaterials[xStep][yStep][zStep + 1]) {
+		elementOne.k = arrayOfMaterials[xStep][yStep][zStep];
+	} else {
+		elementOne.k = DIFFUSION_MATERIAL;
+	}
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep].number);
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep].number);
 	elementOne.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep].number);
@@ -206,7 +242,13 @@ void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	elementOne.nodesNumbers.clear();
 
 	Element elementTwo;
-	elementTwo.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep + 1][yStep][zStep] == arrayOfMaterials[xStep][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep + 1][yStep + 1][zStep] == arrayOfMaterials[xStep + 1][yStep + 1][zStep + 1]) {
+		elementTwo.k = arrayOfMaterials[xStep + 1][yStep][zStep];
+	} else {
+		elementTwo.k = DIFFUSION_MATERIAL;
+	}
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep].number);
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep].number);
 	elementTwo.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep + 1][zStep].number);
@@ -215,7 +257,13 @@ void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	elementTwo.nodesNumbers.clear();
 
 	Element elementThree;
-	elementThree.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep + 1][yStep][zStep] == arrayOfMaterials[xStep][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep][zStep + 1] == arrayOfMaterials[xStep + 1][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep + 1][yStep][zStep + 1] == arrayOfMaterials[xStep + 1][yStep + 1][zStep + 1]) {
+		elementThree.k = arrayOfMaterials[xStep + 1][yStep][zStep];
+	} else {
+		elementThree.k = DIFFUSION_MATERIAL;
+	}
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep].number);
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep + 1].number);
 	elementThree.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep + 1].number);
@@ -224,7 +272,13 @@ void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	elementThree.nodesNumbers.clear();
 
 	Element elementFour;
-	elementFour.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep][yStep + 1][zStep] == arrayOfMaterials[xStep][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep][zStep + 1] == arrayOfMaterials[xStep][yStep + 1][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep + 1] == arrayOfMaterials[xStep + 1][yStep + 1][zStep + 1]) {
+		elementFour.k = arrayOfMaterials[xStep][yStep + 1][zStep];
+	} else {
+		elementFour.k = DIFFUSION_MATERIAL;
+	}
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep].number);
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep + 1].number);
 	elementFour.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep + 1].number);
@@ -233,7 +287,13 @@ void ElementCreator::templateNumberTwo(int xStep, int yStep, int zStep) {
 	elementFour.nodesNumbers.clear();
 
 	Element elementFive;
-	elementFive.k = 0;	// Заглушка
+	if (arrayOfMaterials[xStep + 1][yStep][zStep] == arrayOfMaterials[xStep][yStep + 1][zStep] &&
+		arrayOfMaterials[xStep][yStep + 1][zStep] == arrayOfMaterials[xStep][yStep][zStep + 1] &&
+		arrayOfMaterials[xStep][yStep][zStep + 1] == arrayOfMaterials[xStep + 1][yStep + 1][zStep + 1]) {
+		elementFive.k = arrayOfMaterials[xStep + 1][yStep][zStep];
+	} else {
+		elementFive.k = DIFFUSION_MATERIAL;
+	}
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep + 1][yStep][zStep].number);
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep][yStep + 1][zStep].number);
 	elementFive.nodesNumbers.push_back(arrayOfNodes[xStep][yStep][zStep + 1].number);
