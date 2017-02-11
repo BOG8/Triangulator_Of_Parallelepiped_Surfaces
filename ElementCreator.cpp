@@ -63,25 +63,63 @@ void ElementCreator::loadCylinderProperties(string fileName) {
 	file.close();
 }
 
-int ElementCreator::getIndexByAxe() {
-	if (axe == 'X') {
-		return 0;
-	} else if (axe = 'Y') {
-		return 1;
-	} else if (axe = 'Z') {
-		return 2;
-	}	
-	
-	return -1;
+void ElementCreator::determineMaterialByXAxe(int i, int j, int k) {
+	bool isMaterialDefected = false;
+
+	if (arrayOfNodes[i][j][k].x >= minAxeValue && arrayOfNodes[i][j][k].x <= maxAxeValue) {
+		double axeOne = fabs(arrayOfNodes[i][j][k].y - centerCoordinateOne);
+		double axeTwo = fabs(arrayOfNodes[i][j][k].z - centerCoordinateTwo);
+		double distance = sqrt(pow(axeOne, SECOND_DEGREE) + pow(axeTwo, SECOND_DEGREE));
+
+		if (distance <= radius) {
+			isMaterialDefected = true;
+		}
+	}
+
+	determineMaterial(isMaterialDefected, i, j, k);
 }
 
-void ElementCreator::determineMaterial(int indexOfAxe, int i, int j, int k) {
+void ElementCreator::determineMaterialByYAxe(int i, int j, int k) {
+	bool isMaterialDefected = false;
 
+	if (arrayOfNodes[i][j][k].y >= minAxeValue && arrayOfNodes[i][j][k].y <= maxAxeValue) {
+		double axeOne = fabs(arrayOfNodes[i][j][k].x - centerCoordinateOne);
+		double axeTwo = fabs(arrayOfNodes[i][j][k].z - centerCoordinateTwo);
+		double distance = sqrt(pow(axeOne, SECOND_DEGREE) + pow(axeTwo, SECOND_DEGREE));
+
+		if (distance <= radius) {
+			isMaterialDefected = true;
+		}
+	}
+
+	determineMaterial(isMaterialDefected, i, j, k);
+}
+
+void ElementCreator::determineMaterialByZAxe(int i, int j, int k) {
+	bool isMaterialDefected = false;
+
+	if (arrayOfNodes[i][j][k].z >= minAxeValue && arrayOfNodes[i][j][k].z <= maxAxeValue) {
+		double axeOne = fabs(arrayOfNodes[i][j][k].x - centerCoordinateOne);
+		double axeTwo = fabs(arrayOfNodes[i][j][k].y - centerCoordinateTwo);
+		double distance = sqrt(pow(axeOne, SECOND_DEGREE) + pow(axeTwo, SECOND_DEGREE));
+
+		if (distance <= radius) {
+			isMaterialDefected = true;
+		}
+	}
+
+	determineMaterial(isMaterialDefected, i, j, k);
+}
+
+void ElementCreator::determineMaterial(bool isMaterialDefected, int i, int j, int k) {
+	if (isMaterialDefected) {
+		arrayOfMaterials[i][j][k] = 2;
+	} else {
+		arrayOfMaterials[i][j][k] = 1;
+	}
 }
 
 void ElementCreator::createMapOfMaterials() {
-	int indexOfAxe = getIndexByAxe();
-	
 	arrayOfMaterials = new int**[xStepsNumber + 1];
 	for (int i = 0; i <= xStepsNumber; i++) {
 		arrayOfMaterials[i] = new int*[yStepsNumber + 1];
@@ -90,12 +128,23 @@ void ElementCreator::createMapOfMaterials() {
 		}
 	}
 
-	for (int i = 0; i <= xStepsNumber; i++) {
-		for (int j = 0; j <= yStepsNumber; j++) {
-			for (int k = 0; k <= zStepsNumber; k++) {
-				determineMaterial(indexOfAxe, i, j, k);
-			}
-		}
+	if (axe == 'X') {
+		for (int i = 0; i <= xStepsNumber; i++)
+			for (int j = 0; j <= yStepsNumber; j++)
+				for (int k = 0; k <= zStepsNumber; k++)
+					determineMaterialByXAxe(i, j, k);
+	}
+	else if (axe = 'Y') {
+		for (int i = 0; i <= xStepsNumber; i++)
+			for (int j = 0; j <= yStepsNumber; j++)
+				for (int k = 0; k <= zStepsNumber; k++)
+					determineMaterialByYAxe(i, j, k);
+	}
+	else if (axe = 'Z') {
+		for (int i = 0; i <= xStepsNumber; i++)
+			for (int j = 0; j <= yStepsNumber; j++)
+				for (int k = 0; k <= zStepsNumber; k++)
+					determineMaterialByZAxe(i, j, k);
 	}
 }
 
