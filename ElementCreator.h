@@ -9,6 +9,7 @@ class ElementCreator {
 	char axe;
 	double minAxeValue, maxAxeValue, centerCoordinateOne, centerCoordinateTwo, radius;
 	Node ***arrayOfNodes;
+	int ***arrayOfMaterials;
 	vector<Element> elements;
 
 public:
@@ -18,6 +19,8 @@ public:
 	void setStepsNumbers(int xStepsNumber, int yStepsNumbers, int zStepsNumbers);
 	void setArrayOfNodes(Node ***tempArrayOfNodes);
 	void loadCylinderProperties(string fileName);
+	void determineMaterial(int indexOfAxe, int i, int j, int k);
+	void createMapOfMaterials();
 	void createElements();
 	void printElements();
 	void writeElementsInFile(string fileName);
@@ -25,4 +28,5 @@ public:
 private:
 	void templateNumberOne(int xStep, int yStep, int zStep);
 	void templateNumberTwo(int xStep, int yStep, int zStep);
+	int getIndexByAxe();
 };

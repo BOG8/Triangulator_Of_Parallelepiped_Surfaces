@@ -9,7 +9,16 @@ ElementCreator::ElementCreator() {
 	yStepsNumber = 0;
 	zStepsNumber = 0;
 
+	axe = ' ';
+	minAxeValue = 0;
+	maxAxeValue = 0;
+
+	centerCoordinateOne = 0;
+	centerCoordinateTwo = 0;
+	radius = 0;
+
 	arrayOfNodes = 0;
+	arrayOfMaterials = 0;
 }
 
 ElementCreator::~ElementCreator() {
@@ -52,6 +61,42 @@ void ElementCreator::loadCylinderProperties(string fileName) {
 	}
 
 	file.close();
+}
+
+int ElementCreator::getIndexByAxe() {
+	if (axe == 'X') {
+		return 0;
+	} else if (axe = 'Y') {
+		return 1;
+	} else if (axe = 'Z') {
+		return 2;
+	}	
+	
+	return -1;
+}
+
+void ElementCreator::determineMaterial(int indexOfAxe, int i, int j, int k) {
+
+}
+
+void ElementCreator::createMapOfMaterials() {
+	int indexOfAxe = getIndexByAxe();
+	
+	arrayOfMaterials = new int**[xStepsNumber + 1];
+	for (int i = 0; i <= xStepsNumber; i++) {
+		arrayOfMaterials[i] = new int*[yStepsNumber + 1];
+		for (int j = 0; j <= yStepsNumber; j++) {
+			arrayOfMaterials[i][j] = new int[zStepsNumber + 1];
+		}
+	}
+
+	for (int i = 0; i <= xStepsNumber; i++) {
+		for (int j = 0; j <= yStepsNumber; j++) {
+			for (int k = 0; k <= zStepsNumber; k++) {
+				determineMaterial(indexOfAxe, i, j, k);
+			}
+		}
+	}
 }
 
 void ElementCreator::templateNumberOne(int xStep, int yStep, int zStep) {
