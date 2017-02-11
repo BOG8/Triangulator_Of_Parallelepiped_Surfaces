@@ -55,7 +55,6 @@ void TriangulationManager::runElementCreator() {
 	elementCreator.loadCylinderProperties(CYLINDER_PROPERTIES);
 	elementCreator.createMapOfMaterials();
 	elementCreator.createElements();
-	elementCreator.printElements();
 	elementCreator.writeElementsInFile(RESULT_FILE);
 }
 
@@ -64,4 +63,6 @@ void TriangulationManager::run() {
 	if (runNodeCreator()) {
 		runElementCreator();
 	}
+
+	cout << "Check Result.txt/n";
 }

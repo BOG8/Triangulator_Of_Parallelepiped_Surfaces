@@ -135,9 +135,7 @@ void NodeCreator::printNodes() {
 // Запуск основных действий
 void NodeCreator::run() {
 	correctAllSteps();
-	printInitialData();
 	createNodes();
-	printNodes();
 }
 
 // Запись данных об узлах в файл fileName
