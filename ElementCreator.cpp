@@ -134,13 +134,13 @@ void ElementCreator::createMapOfMaterials() {
 				for (int k = 0; k <= zStepsNumber; k++)
 					determineMaterialByXAxe(i, j, k);
 	}
-	else if (axe = 'Y') {
+	else if (axe == 'Y') {
 		for (int i = 0; i <= xStepsNumber; i++)
 			for (int j = 0; j <= yStepsNumber; j++)
 				for (int k = 0; k <= zStepsNumber; k++)
 					determineMaterialByYAxe(i, j, k);
 	}
-	else if (axe = 'Z') {
+	else if (axe == 'Z') {
 		for (int i = 0; i <= xStepsNumber; i++)
 			for (int j = 0; j <= yStepsNumber; j++)
 				for (int k = 0; k <= zStepsNumber; k++)
